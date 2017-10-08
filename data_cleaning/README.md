@@ -1,4 +1,4 @@
-#Getting And Cleaning Data - Course Project
+# Getting And Cleaning Data - Course Project
 
 ## Introduction
 This is my course project for Coursera [Getting and Cleaning Data](https://www.coursera.org/learn/data-cleaning/home). The assignment spec is stated on this [page](https://www.coursera.org/learn/data-cleaning/peer/FIZtT/getting-and-cleaning-data-course-project).
