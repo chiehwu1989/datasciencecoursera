@@ -479,7 +479,12 @@ sum(categoricalTraining == &quot;&quot; | categoricalTraining == &quot;#DIV/0!&q
 <pre><code>## [1] 637630</code></pre>
 <pre class="r"><code>chisq.test(trainingNonNA$user_name, trainingRaw$classe)$p.value</code></pre>
 <pre><code>## [1] 3.665559e-40</code></pre>
-<p>Besides user_name, most of the categorical variables seems to be continuous variables, but the majority is unknown value such as empty string and “#DIV/0!”. Therefore, these categorical variables will not be selected for the model. Chisq test between user_name and classe gives a very low p-value (3.67e-40) which indicates user_name has relation with classe. ## Model Training Will train the model using randome forest with 10-fold cross validation.</p>
+<p>Besides user_name, most of the categorical variables seems to be continuous variables, but the majority is unknown value such as empty string and “#DIV/0!”. Therefore, these categorical variables will not be selected for the model. Chisq test between user_name and classe gives a very low p-value (3.67e-40) which indicates user_name has relation with classe.</p>
+</div>
+</div>
+<div id="model-training" class="section level2">
+<h2>Model Training</h2>
+<p>Will train the model using randome forest with 10-fold cross validation.</p>
 <pre class="r"><code>finalTraining &lt;- trainingNonNA %&gt;%
   select(one_of(c(lowCorColName, &quot;user_name&quot;)))
 finalTraining$classe &lt;- trainingRaw$classe
@@ -515,7 +520,6 @@ model</code></pre>
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was mtry = 29.</code></pre>
 <p>The model accuracy is abount 99.5%.</p>
-</div>
 </div>
 <div id="prediction" class="section level2">
 <h2>Prediction</h2>
