@@ -91,6 +91,7 @@ chisq.test(trainingNonNA$user_name, trainingRaw$classe)$p.value
 ```
 Besides user_name, most of the categorical variables seems to be continuous variables, but the majority is unknown value such as empty string and "#DIV/0!". Therefore, these categorical variables will not be selected for the model.
 Chisq test between user_name and classe gives a very low p-value (3.67e-40) which indicates user_name has relation with classe.
+
 ## Model Training
 Will train the model using randome forest with 10-fold cross validation.
 ```{r trainModel}
