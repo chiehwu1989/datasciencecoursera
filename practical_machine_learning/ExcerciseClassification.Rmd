@@ -89,14 +89,13 @@ sum(categoricalTraining == "" | categoricalTraining == "#DIV/0!")
 
 chisq.test(trainingNonNA$user_name, trainingRaw$classe)$p.value
 ```
-None of the categorical variables will be selected for training the model because of the following reasons:
-* Besides user_name, most of the categorical variables seems to be continuous variables, but the majority is unknown value such as empty string and "#DIV/0!". 
-* Chisq test between user_name and classe gives a very low p-value (3.67e-40) so user_name and classe are independent.
+Besides user_name, most of the categorical variables seems to be continuous variables, but the majority is unknown value such as empty string and "#DIV/0!". Therefore, these categorical variables will not be selected for the model.
+Chisq test between user_name and classe gives a very low p-value (3.67e-40) which indicates user_name has relation with classe.
 ## Model Training
 Will train the model using randome forest with 10-fold cross validation.
 ```{r trainModel}
 finalTraining <- trainingNonNA %>%
-  select(one_of(lowCorColName))
+  select(one_of(c(lowCorColName, "user_name")))
 finalTraining$classe <- trainingRaw$classe
 
 set.seed(7)
