@@ -479,9 +479,9 @@ sum(categoricalTraining == &quot;&quot; | categoricalTraining == &quot;#DIV/0!&q
 <pre><code>## [1] 637630</code></pre>
 <pre class="r"><code>chisq.test(trainingNonNA$user_name, trainingRaw$classe)$p.value</code></pre>
 <pre><code>## [1] 3.665559e-40</code></pre>
-<p>None of the categorical variables will be selected for training the model because of the following reasons: * Besides user_name, most of the categorical variables seems to be continuous variables, but the majority is unknown value such as empty string and “#DIV/0!”. * Chisq test between user_name and classe gives a very low p-value (3.67e-40) so user_name and classe are independent. ## Model Training Will train the model using randome forest with 10-fold cross validation.</p>
+<p>Besides user_name, most of the categorical variables seems to be continuous variables, but the majority is unknown value such as empty string and “#DIV/0!”. Therefore, these categorical variables will not be selected for the model. Chisq test between user_name and classe gives a very low p-value (3.67e-40) which indicates user_name has relation with classe. ## Model Training Will train the model using randome forest with 10-fold cross validation.</p>
 <pre class="r"><code>finalTraining &lt;- trainingNonNA %&gt;%
-  select(one_of(lowCorColName))
+  select(one_of(c(lowCorColName, &quot;user_name&quot;)))
 finalTraining$classe &lt;- trainingRaw$classe
 
 set.seed(7)
@@ -499,7 +499,7 @@ model</code></pre>
 <pre><code>## Random Forest 
 ## 
 ## 19622 samples
-##    51 predictor
+##    52 predictor
 ##     5 classes: 'A', 'B', 'C', 'D', 'E' 
 ## 
 ## No pre-processing
@@ -508,12 +508,12 @@ model</code></pre>
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  Accuracy   Kappa    
-##    2    0.9948016  0.9934240
-##   26    0.9948533  0.9934894
-##   51    0.9917952  0.9896206
+##    2    0.9941899  0.9926500
+##   29    0.9951590  0.9938760
+##   56    0.9916934  0.9894916
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was mtry = 26.</code></pre>
+## The final value used for the model was mtry = 29.</code></pre>
 <p>The model accuracy is abount 99.5%.</p>
 </div>
 </div>
