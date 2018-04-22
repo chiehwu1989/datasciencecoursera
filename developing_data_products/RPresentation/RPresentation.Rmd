@@ -1,0 +1,38 @@
+---
+title: "Motor Trend Car Road Tests Data Visualization Application"
+author: Hans Wu
+output: slidy_presentation
+date: "April 22, 2018"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+data(mtcars)
+```
+
+## Why the Visualization Application
+It is well known that using charts or graphs to visualize of complex data is easier to be processed by human brain. With the this interactive visualization application, you can easily navigate data and drill down into charts and graphs for discovering more insights.
+
+
+## About the Application
+
+This application helps you find out relations between variables, spot outlier and quickly perform linear regression analysis.
+
+Here are the major features of the application:
+
+- Dynamically create a scatterplot with given X and Y variables
+- Break down data points by group
+- Run and plot linear regression with selected data points
+
+
+## Data Set Overview
+The data set used in the application was extracted from the 1974 Motor Trend US magazine. It comprises fuel efficiency and 10 other aspects of 32 car models in 1973 - 1974
+
+```{r dataSet, echo = TRUE}
+head(mtcars)
+```
+
+## Checkout Yourself
+
+### Link: [Visualization Tool](https://chiehwu1989.shinyapps.io/MyApplication/)
